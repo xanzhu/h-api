@@ -17,6 +17,7 @@ How to use:
 - Server.js - Back-end Handles collecting data from lambda csv files.
 - Index.html - default entry point
 
-Console output contains helpful information 
+Console output contains helpful information:
+
 - List files that can be used
-- CSV results 
+- CSV results
