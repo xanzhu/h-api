@@ -1,0 +1,15 @@
+{
+  "name": "hapi",
+  "version": "0.0.1",
+  "description": "Simple app to view lambda data files",
+  "main": "client.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Xanzhu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "papaparse": "^5.4.1"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hapi by Xanzhu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+  </head>
+  <body class="container">
+    <h1>Halter API Viewer Demo</h1>
+    <div class="searchDiv">
+      <input type="text" id="farmName" placeholder="Enter Farm ID" />
+      <button id="searchBtn">Search</button>
+    </div>
+    <div>
+      <button id="bulkBtn">Bulk Display</button>
+    </div>
+    <div class="table-view">
+      <table id="tableData">
+        <thead class="col-head">
+          <th>Farm ID</th>
+          <th>Tower ID</th>
+          <th>RSSI</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="/client.js"></script>
+  </body>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    table {
+      display: block;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border: 1px solid #000;
+    }
+
+    .searchDiv {
+      padding: 4px;
+    }
+
+    h1 {
+      margin-top: 50px;
+      color: #1b4f39;
+      font-size: 3rem;
+    }
+
+    .col-head {
+      color: #fff;
+      background-color: #000;
+    }
+
+    .table-view {
+      padding: 40px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      color: #0d0d0d;
+    }
+
+    #farmName {
+      width: 233px;
+    }
+
+    #searchBtn,
+    #farmName,
+    #bulkBtn {
+      padding: 10px;
+      color: #000;
+      background-color: #ffffff;
+      border: 1px solid #1b4f39;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    #bulkBtn {
+      margin-top: 10px;
+      padding: 5px;
+    }
+
+    #searchBtn {
+      background-color: #1b4f39;
+      color: #fff;
+    }
+  </style>
+</html>
