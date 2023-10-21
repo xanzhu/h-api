@@ -39,16 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.innerHTML = "";
 
     const rows = data.split(",");
-    const headerRow = rows.slice(0, 3);
 
     const thead = document.createElement("thead");
     const headerRowElement = document.createElement("tr");
-
-    headerRow.forEach((cell) => {
-      const th = document.createElement("th");
-      th.textContent = cell.trim();
-      headerRowElement.appendChild(th);
-    });
 
     thead.appendChild(headerRowElement);
     tableData.appendChild(thead);
@@ -76,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.innerHTML = "";
 
     const rows = data.split(",");
-    const headerRow = rows.slice(0, 3);
 
     // Display the title with the name
     const titleRow = document.createElement("tr");
@@ -104,23 +96,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display Rows
-    const bestScoreRow = document.createElement("tr");
-    const farmNameCell = document.createElement("td");
-    const towerCell = document.createElement("td");
-    const rssiCell = document.createElement("td");
+    if (bestScore != -Infinity) {
+      const bestScoreRow = document.createElement("tr");
+      const farmNameCell = document.createElement("td");
+      const towerCell = document.createElement("td");
+      const rssiCell = document.createElement("td");
 
-    // Assign Cells
-    farmNameCell.textContent = name;
-    towerCell.textContent = bestID;
-    rssiCell.textContent = bestScore;
+      // Assign Cells
+      farmNameCell.textContent = name;
+      towerCell.textContent = bestID;
+      rssiCell.textContent = bestScore;
 
-    // Add cells to the row
-    bestScoreRow.appendChild(farmNameCell);
-    bestScoreRow.appendChild(towerCell);
-    bestScoreRow.appendChild(rssiCell);
+      // Add cells to the row
+      bestScoreRow.appendChild(farmNameCell);
+      bestScoreRow.appendChild(towerCell);
+      bestScoreRow.appendChild(rssiCell);
 
-    // Add to Table
-    tbody.appendChild(bestScoreRow);
+      // Add to Table
+      tbody.appendChild(bestScoreRow);
+    } else {
+      alert("Farm ID not found");
+      tbody.innerHTML = "";
+      setTimeout(() => {
+        hideTable();
+      }, 0);
+    }
   }
 
   // Search function
