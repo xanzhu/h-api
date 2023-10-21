@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Establish connection to API vis /api
+// Establish API via /api
 app.get("/api", async (req, res) => {
   if (apiCache) {
     res.json(apiCache);
@@ -30,6 +30,7 @@ app.get("/api", async (req, res) => {
       if (Array.isArray(data)) {
         apiCache = data;
         res.json(data);
+        console.log("API Loaded and ready to use!");
       } else {
         res.status(500).json({ error: "Invalid data." });
       }
@@ -61,7 +62,7 @@ async function loadAPI() {
       return [];
     }
 
-    // Load object from array (files 0 - 5)
+    // Load files from api array (files 0 - 5)
     const selectedObj = arrayItems[0];
     const fileRes = await fetch(selectedObj);
 

@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const rows = data.split(",");
 
-    // Display the title with the name
+    // Add title cell
     const titleRow = document.createElement("tr");
     const titleCell = document.createElement("td");
     titleCell.colSpan = 3;
-    titleCell.textContent = `Best Score for Farm ID: ${name}`;
+    titleCell.textContent = `Best Tower for Farm ID: ${name}`;
     titleRow.appendChild(titleCell);
     tbody.appendChild(titleRow);
 
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Display Rows
+    // Display calculated row
     if (bestScore != -Infinity) {
       const bestScoreRow = document.createElement("tr");
       const farmNameCell = document.createElement("td");
@@ -106,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
       farmNameCell.textContent = name;
       towerCell.textContent = bestID;
       rssiCell.textContent = bestScore;
+
+      // Cell Design
+      towerCell.style.backgroundColor = "#1b4f39";
+      towerCell.style.color = "#fff";
 
       // Add cells to the row
       bestScoreRow.appendChild(farmNameCell);
