@@ -9,6 +9,8 @@ const port = 3000;
 // Halter Lambda API!
 const halterApi = "https://api.onizmx.com/lambda/tower_stream";
 
+let apiCache = null;
+
 // Express configurations
 const app = express();
 app.use(express.static(path.join(__dirname)));
@@ -19,14 +21,22 @@ app.get("/", (req, res) => {
 });
 
 // Establish connection to API vis /api
-app.get("/api", (req, res) => {
-  loadAPI().then((data) => {
-    if (Array.isArray(data)) {
-      res.json(data);
-    } else {
-      res.status(500).json({ error: "Invalid data." });
+app.get("/api", async (req, res) => {
+  if (apiCache) {
+    res.json(apiCache);
+  } else {
+    try {
+      const data = await loadAPI();
+      if (Array.isArray(data)) {
+        apiCache = data;
+        res.json(data);
+      } else {
+        res.status(500).json({ error: "Invalid data." });
+      }
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
-  });
+  }
 });
 
 app.listen(port, () => {
@@ -66,6 +76,9 @@ async function loadAPI() {
 
     // DEBUG: Print csv lines to console
     console.log(fileProcess.data);
+
+    // Cache initial request
+    apiCache = fileProcess.data;
 
     return fileProcess.data;
   } catch (error) {
